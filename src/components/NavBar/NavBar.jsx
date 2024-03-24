@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Link from "../Link/Link";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const NavBar = () => {
 
@@ -16,19 +17,20 @@ const NavBar = () => {
 
     return (
         <nav>
-            <div className="md:hidden" onClick={() => setOpen(!open)}>
+            <div className="md:hidden text-4xl" onClick={() => setOpen(!open)}>
                 {
-                    open === true ? 'open': 'close'
+                    open === true ?<IoMdCloseCircleOutline />
+                    : <HiMenuAlt1 />
                 }
-                <HiMenuAlt1 className="text-4xl"/>
+               
             </div>
-            <ul className="md:flex">
+            <ul className="md:flex absolute bg-yellow-100 text-neutral-900">
             {
                 routes.map(route => <Link key={route.id} route={route}></Link>)
             }
             </ul>
         </nav>
-    );
+    ); 
 };
 
 export default NavBar;
